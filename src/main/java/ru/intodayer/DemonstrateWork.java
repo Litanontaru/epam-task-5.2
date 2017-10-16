@@ -1,14 +1,13 @@
 package ru.intodayer;
 
-import java.util.concurrent.Semaphore;
-
 
 public class DemonstrateWork {
     public static void demonstrate() {
-        Semaphore semaphore = new Semaphore(3, true);
-        new Philosopher(semaphore, "Nietzsche").start();
-        new Philosopher(semaphore, "Parmenides").start();
-        new Philosopher(semaphore, "Aristotle").start();
-        new Philosopher(semaphore, "Sun Tzu").start();
+        Forks forks = new Forks();
+        new Philosopher("Nietzsche", 0, forks).start();
+        new Philosopher("Parmenides", 1, forks).start();
+        new Philosopher("Aristotle", 2, forks).start();
+        new Philosopher("Sun Tzu", 3, forks).start();
+        new Philosopher("Sun Tzu", 4, forks).start();
     }
 }
