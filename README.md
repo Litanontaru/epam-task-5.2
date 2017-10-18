@@ -1,1 +1,2 @@
-# epam-task-5.2
+# Five eating philosophers task
+#### Author: Borisov Denis
