@@ -2,7 +2,9 @@ package ru.intodayer;
 
 import java.util.concurrent.Semaphore;
 
-
+//Дизайн класса переусложнён.
+//Такая оргаизация хороша только в том, случае, когда философы постоянно меняются своими вилками.
+//В задаче же к каждому философу строко соответствует 2 вилки.
 public class Forks {
     private Semaphore forks[];
 

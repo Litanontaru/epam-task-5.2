@@ -4,11 +4,16 @@ import java.util.concurrent.Semaphore;
 
 
 public class Philosopher extends Thread {
+    //эта переменная больше похожа на private static final
     private final int mealsLimit = 100;
+    //поле может быть final
     private final Forks forks;
+    //необходимость в этом семаформе неясна. Доступ к каким данным он регулирует?
     private Semaphore mainSemaphore;
+    //поле может быть final
     private String name;
     private int numberOfMeals;
+    //поле может быть final
     private int id;
 
     public Philosopher(String name, int id, Forks forks) {
@@ -45,6 +50,9 @@ public class Philosopher extends Thread {
         numberOfMeals++;
         System.out.printf("%-10s id:%s %20s%n", name, id, "is thinking");
 
+        //Существует строгая практика делать unlock/release в секции finally,
+        //иначе при выпадении Error или Exception lock/semaphore не будет отпушени
+        //и система войдёт в неконсистентное состояние
         returnRightFork();
         returnLeftFork();
         sleep(50);
